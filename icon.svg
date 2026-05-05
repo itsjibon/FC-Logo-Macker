@@ -1,1 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
 
+  <defs>
+    <!-- Neon background -->
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1a0033"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Neon glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#00f7ff" flood-opacity="0.35"/>
+    </filter>
+
+    <!-- Chrome gradient text -->
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#b0b0b0"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="75%" stop-color="#8c8c8c"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <!-- Neon stroke -->
+    <linearGradient id="strokeNeon">
+      <stop offset="0%" stop-color="#00f7ff"/>
+      <stop offset="50%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+
+  <!-- Neon glow circle -->
+  <circle cx="256" cy="256" r="200" fill="#00f7ff" opacity="0.05" filter="url(#glow)"/>
+
+  <!-- 3D shadow text -->
+  <text x="50%" y="55%" text-anchor="middle"
+        font-size="130"
+        font-family="Arial Black"
+        fill="#000000"
+        opacity="0.35"
+        transform="translate(10,12)">
+    FC
+  </text>
+
+  <!-- Neon stroke layer -->
+  <text x="50%" y="55%" text-anchor="middle"
+        font-size="130"
+        font-family="Arial Black"
+        fill="none"
+        stroke="url(#strokeNeon)"
+        stroke-width="6"
+        opacity="0.9"
+        filter="url(#glow)">
+    FC
+  </text>
+
+  <!-- Main chrome text -->
+  <text x="50%" y="55%" text-anchor="middle"
+        font-size="130"
+        font-family="Arial Black"
+        fill="url(#chrome)"
+        filter="url(#shadow)">
+    FC
+  </text>
+
+</svg>
