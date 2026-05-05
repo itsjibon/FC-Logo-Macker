@@ -1,1 +1,210 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC Logo Macker DX</title><style>
+body{
+margin:0;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(-45deg,#ff4d6d,#ff85a1,#ff5c8a,#ff99ac);
+background-size:400% 400%;
+animation:bgmove 8s ease infinite;
+}
 
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Box */
+.box{
+background:rgba(255,255,255,0.2);
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+input{
+padding:10px;
+border:none;
+border-radius:10px;
+}
+
+button{
+padding:10px;
+margin:5px;
+border:none;
+border-radius:10px;
+background:#ff2e63;
+color:#fff;
+cursor:pointer;
+}
+
+.result{
+margin-top:10px;
+color:white;
+font-size:22px;
+}
+
+/* WhatsApp FIX */
+.wa-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+font-size:24px;
+padding:14px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 0 10px #25D366;
+}
+
+/* Contact */
+.contact-btn{
+position:fixed;
+bottom:90px;
+right:20px;
+background:#ff2e63;
+color:white;
+padding:10px;
+border:none;
+border-radius:10px;
+}
+
+/* Popup */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.popup-box a{
+background:#25D366;
+color:white;
+padding:10px;
+border-radius:10px;
+text-decoration:none;
+}
+
+/* Watermark */
+.watermark{
+position:fixed;
+bottom:5px;
+left:10px;
+opacity:0.4;
+color:white;
+font-size:12px;
+}
+</style></head><body><div class="box">
+<h2>ҒᏟ ᏞϴᏀϴ ᎷᎪᏟᏦ 💝</h2><input type="text" id="name" placeholder="Enter Your Name"><br>
+
+<button onclick="makeName()">Create</button>
+<button onclick="copyText()">Copy</button>
+
+
+<div id="output" class="result">Your Stylish Name</div><p style="color:#00ffcc;">👑 System Creator By (ХᎪͲᏦᎪ)</p>
+</div><!-- WhatsApp --><a href="https://wa.me/8801870339767" target="_blank" class="wa-float">💬</a>
+
+<!-- Contact --><button class="contact-btn" onclick="openPopup()">Admin Contact👇</button>
+
+<div id="popup" class="popup">
+<div class="popup-box">
+<h3>Contact Developer 💖</h3>
+<a href="https://wa.me/8801870339767">Open WhatsApp</a><br><br>
+<button onclick="closePopup()">Close</button>
+</div>
+</div><div class="watermark">© ITS Love Family DX</div><script>
+
+// LOGO
+function makeName(){
+
+let name=document.getElementById("name").value.trim();
+
+if(name===""){
+document.getElementById("output").innerText="Enter Name First";
+return;
+}
+
+let prefix="ᶦƬˢ⃝🎀";
+let suffix="﷽";
+
+let font={
+A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ғ',G:'ɢ',
+H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',
+O:'ᴏ',P:'ᴘ',Q:'ǫ',R:'ʀ',S:'s',T:'ᴛ',U:'ᴜ',
+V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ'
+};
+
+/* First letter → 🇦 🇧 style */
+let first=name.charAt(0).toUpperCase();
+let code=first.charCodeAt(0);
+
+let regional="";
+if(code>=65 && code<=90){
+regional=String.fromCodePoint(0x1F1E6+(code-65));
+}else{
+regional=first;
+}
+
+/* Rest stylish */
+let rest=name.slice(1);
+let styled="";
+
+for(let i=0;i<rest.length;i++){
+let ch=rest[i].toUpperCase();
+styled += font[ch] || rest[i];
+}
+
+document.getElementById("output").innerText =
+prefix + regional + styled + suffix;
+}
+
+// COPY
+function copyText(){
+let text=document.getElementById("output").innerText;
+navigator.clipboard.writeText(text);
+alert("Copied ✅");
+}
+
+// SEND TO WHATSAPP (NEW 🔥)
+function sendWhatsApp(){
+let text=document.getElementById("output").innerText;
+
+if(text==="Your Stylish Name"){
+alert("Create Name First");
+return;
+}
+
+let url="https://wa.me/8801870339767?text="+encodeURIComponent(text);
+window.open(url);
+}
+
+// POPUP
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+}
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+</script></body>
+</html>
